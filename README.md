@@ -21,10 +21,10 @@ Usage
 
 ### Lawsuits
 
-Before `esaj` if you wanted to gather information about lawsuits being processed by Brazil's state-level Judiciary, you would have to go to each state's e-SAJ portal, manually input each lawsuit's ID, break a capthca, and only then download an HTML with the information you wanted; now you can simply run `download_cpopg()` or `download_cposg()`, and spend your valuable time analysing the data.
+Before `esaj` if you wanted to gather information about lawsuits being processed by Brazil's state-level Judiciary ("TJ" or "TJs"), you would have to go to each state's e-SAJ portal, manually input each lawsuit's ID, break a capthca, and only then download an HTML with the information you wanted; now you can simply run `download_cpopg()` or `download_cposg()`, and spend your valuable time analysing the data.
 
 ``` r
-# Download first degree lawsuits from multiple states
+# Download trial court level from multiple states
 ids <- c(
   "0123479-07.2012.8.26.0100",
   "0552486-62.2015.8.05.0001",
@@ -34,7 +34,7 @@ esaj::download_cpopg(ids, "~/Desktop/")
 #> [2] "/Users/user/Desktop/05524866220158050001.html"
 #> [3] "/Users/user/Desktop/03033494420148240020.html"
 
-# Download second degree lawsuits from São Paulo
+# Download appellate level cases from São Paulo State Court of Justice 
 ids <- c(
   "1001869-51.2017.8.26.0562",
   "1001214-07.2016.8.26.0565")
@@ -50,12 +50,12 @@ For more information on how to use these functions and which TJs are implemented
 Besides downloading lawsuits (see the **Downloading Lawsuits** article), `esaj` also allows the user to download the results of a query on lawsuits. This kind of query is very useful for finding out what lawsuits contain certain words, were filed in a given period, were filed in a given court, etc.
 
 ``` r
-# Download results of a simple first degree query
+# Download results of a simple trial level query
 esaj::download_cjpg("recurso", "~/Desktop/")
 #> [1] "/Users/user/Desktop/search.html"
 #> [2] "/Users/user/Desktop/page1.html"
 
-# Download results of a slightly more complex second degree query
+# Download results of a slightly more complex appellate level query
 esaj::download_cjsg("recurso", "~/Desktop/", classes = c("1231", "1232"))
 #> [1] "/Users/user/Desktop/search.html"
 #> [2] "/Users/user/Desktop/page1.html"
